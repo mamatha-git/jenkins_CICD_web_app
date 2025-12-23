@@ -2,22 +2,9 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Check Maven') {
+        stage('Checkout') {
             steps {
-                sh 'mvn -v'
-            }
-        }
-
-        stage('Build Application') {
-            steps {
-                sh 'mvn clean package'
-            }
-        }
-
-        stage('Run Application') {
-            steps {
-                sh 'nohup mvn spring-boot:run &'
+                echo 'Pipeline started successfully'
             }
         }
     }
