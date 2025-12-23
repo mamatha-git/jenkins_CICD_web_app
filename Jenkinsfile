@@ -1,12 +1,22 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven3'
+        jdk 'JDK17'
+    }
+
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                echo 'Pipeline started successfully'
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Run Application') {
+            steps {
+                sh 'nohup mvn spring-boot:run &'
             }
         }
     }
 }
-
