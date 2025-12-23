@@ -1,13 +1,15 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven3'
-        jdk 'JDK17'
-    }
-
     stages {
-        stage('Build') {
+
+        stage('Check Maven') {
+            steps {
+                sh 'mvn -v'
+            }
+        }
+
+        stage('Build Application') {
             steps {
                 sh 'mvn clean package'
             }
